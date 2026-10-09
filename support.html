@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>技术支持 · 胶片全能助手</title>
+<style>
+  :root {
+    --bg: #faf9f7;
+    --card: #ffffff;
+    --ink: #1c1c1e;
+    --muted: #6b6b70;
+    --line: #e6e3de;
+    --accent: #c2510f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #131313;
+      --card: #1c1c1e;
+      --ink: #f2f2f7;
+      --muted: #9a9aa0;
+      --line: #2e2e31;
+      --accent: #ff8a4c;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 32px 20px 64px;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.75 -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  main { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 28px; line-height: 1.3; margin: 0 0 8px; }
+  h2 {
+    font-size: 19px;
+    margin: 36px 0 12px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+  h3 { font-size: 16px; margin: 22px 0 6px; }
+  p { margin: 10px 0; }
+  .sub { color: var(--muted); font-size: 14px; margin: 0 0 4px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin: 18px 0;
+  }
+  a { color: var(--accent); }
+  ul { padding-left: 22px; }
+  li { margin: 6px 0; }
+  code {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 1px 5px;
+    font-size: 14px;
+  }
+  footer {
+    margin-top: 44px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <h1>技术支持</h1>
+  <p class="sub">胶片全能助手 · Film Camera Master</p>
+
+  <div class="card">
+    <h3 style="margin-top:0">联系我们</h3>
+    <p>使用中遇到问题、发现数据有误，或想提新胶片／机型的需求，欢迎发邮件：</p>
+    <p><strong>邮箱：<a href="mailto:zhangdk1997@buaa.edu.cn">zhangdk1997@buaa.edu.cn</a></strong></p>
+    <p class="sub">我们会在 3 个工作日内回复。邮件里附上机型、iOS 版本和出问题的操作步骤，能帮我们更快定位。</p>
+  </div>
+
+  <h2>常见问题</h2>
+
+  <h3>测光结果和别的测光表不一样？</h3>
+  <p>本 App 是拿手机摄像头的实时画面做反射式测光，再按你选定的胶片感光度解算光圈、快门。结果会受镜头前有没有遮光、画面里亮暗比例影响，和入射式测光表本来就存在系统性差异。建议在实拍前用固定场景对一次，找到属于你自己机身和冲洗流程的偏差值。</p>
+
+  <h3>胶片和相机数据是从哪来的？</h3>
+  <p>胶片参数取自各厂商公开的官方数据表（感光度、宽容度、倒易律失效区间、推荐冲洗工艺等），相机部分参考官方说明书与公开发行的技术资料。若你发现某条数据与你的实拍经验不符，欢迎来信指出。</p>
+
+  <h3>App 需要联网吗？会上传我的照片吗？</h3>
+  <p>完全不需要联网，App 内不含任何网络请求，也不集成任何第三方 SDK。测光画面只在设备内存中实时处理，拍下的照片只写入你指定的相册，不会离开这台手机。详见<a href="./index.html">隐私政策</a>。</p>
+
+  <h3>「Pro 终身解锁」包含什么？怎么恢复？</h3>
+  <p>Pro 为一次性买断，非订阅，解锁全部高级功能。换机或重装后，在 App 内的解锁页点「恢复购买」即可找回，同一个 Apple ID 无需重复付费。若恢复失败，先确认设备已登录购买时用的 Apple ID，再重试。</p>
+
+  <h3>系统相机拍的照片存在哪里？</h3>
+  <p>「系统相机」和「反转片预览」拍下的照片会存进系统相册，同时保留一份备份在 App 沙盒的 <code>Documents</code> 目录。你可以打开「文件」App，在「我的 iPhone → 胶片全能助手」下查看、导出或自行删除。卸载 App 时这些备份会一并移除。</p>
+
+  <h3>为什么拒绝相机权限后有些功能用不了？</h3>
+  <p>实时测光、系统相机和反转片预览都依赖摄像头画面，这是功能本身的需要。若你拒绝授权，仅这几项不可用，胶片库、景深计算、滤镜模拟等其余部分仍可正常使用。可在「设置 → 隐私与安全性 → 相机」里随时重新打开。</p>
+
+  <h3>数据可以自己更正吗？</h3>
+  <p>可以。App 内的胶片与相机资料均支持本地查看与调整，你的修改只保存在本机，不会同步到任何服务器。</p>
+
+  <footer>
+    最后更新：2026 年 10 月 9 日<br>
+    © 2026 张登科 · 保留所有权利
+  </footer>
+
+</main>
+</body>
+</html>
