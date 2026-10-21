@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-Hans" data-lang="zh">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -82,20 +82,62 @@
   .en h2 { font-size: 16px; }
   a { color: var(--accent); }
   footer { margin-top: 48px; color: var(--muted); font-size: 14px; }
+  /* 两种语言放在同一页：App Store Connect 里隐私政策只能填一个 URL,
+     拆成 /zh/ 与 /en/ 总有一边的用户要多点一次、或者干脆看到另一种语言。
+     这里按浏览器语言先选一次,用户点过就以他的选择为准。 */
+  .langbar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin: 0 0 18px;
+    font-size: 14px;
+  }
+  .langbar button {
+    appearance: none;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    background: none;
+    padding: 2px 0;
+    font: inherit;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .langbar button[aria-pressed="true"] {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  html[data-lang="zh"] .en { display: none; }
+  html[data-lang="en"] .zh { display: none; }
+  /* 英文那段原本是缀在中文后面当附录的:灰字、上方一条分隔线。
+     单独显示时要回到正文的颜色与位置,否则整页像一段引文 */
+  html[data-lang="en"] .en {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+    color: var(--ink);
+  }
 </style>
 </head>
 <body>
 <main>
 
+<nav class="langbar" aria-label="语言 / Language">
+  <button type="button" data-lang="zh" aria-pressed="false">中文</button>
+  <button type="button" data-lang="en" aria-pressed="false">English</button>
+</nav>
+
+<div class="zh">
+
 <header>
   <h1>隐私政策</h1>
   <p class="meta">适用应用：胶片全能助手（FilmCameraMaster）<br>
-  生效日期：2026 年 10 月 9 日　·　最后更新：2026 年 10 月 9 日</p>
+  生效日期：2026 年 10 月 9 日　·　最后更新：2026 年 10 月 21 日</p>
 </header>
 
 <div class="summary">
   <p><strong>一句话总结：这个 App 不收集你的任何信息。</strong><br>
-  它不联网、没有账号体系、不含广告和分析工具，你拍的照片和测光数据始终只留在你自己的手机上。</p>
+  它不发起任何网络请求、没有账号体系、不含广告和分析工具，你拍的照片和测光数据只留在你自己的手机上。
+  若你打开「iCloud 同步」，记录会存进你自己的 iCloud 私有库，我们读不到（见第 3 节）。</p>
 </div>
 
 <section>
@@ -104,12 +146,14 @@
   <p>具体来说，本 App 不会收集或接触以下内容：</p>
   <ul>
     <li>姓名、手机号、邮箱等身份信息</li>
-    <li>位置信息</li>
     <li>通讯录、日历、麦克风内容</li>
     <li>设备标识符（如 IDFA）、广告标识符</li>
     <li>使用行为、崩溃日志等分析数据</li>
   </ul>
-  <p>本 App 不含任何网络请求功能，因此不存在数据被传输到我们或第三方服务器的可能。</p>
+  <p>位置是唯一的例外，而且只在你自己打开「拍照时记录地点」时才会用到：它被写进那一帧照片的元数据，
+  留在本机与你保存的相册里，不会上传给我们（见第 2 节）。</p>
+  <p>App 自身不发起任何网络请求，因此不存在数据被传输到我们或第三方的可能。唯一的联网行为是你可选的
+  iCloud 同步，由系统的 CloudKit 框架直接与你自己的 iCloud 账号通信，见第 3 节。</p>
 </section>
 
 <section>
@@ -132,6 +176,11 @@
       <td>把「系统相机」和「反转片预览」拍下的照片保存到系统相册</td>
       <td>写入你指定的相册，App 不读取相册中的其他内容</td>
     </tr>
+    <tr>
+      <td>定位（使用期间）</td>
+      <td>仅在你打开「拍照时记录地点」时，取当前位置写进那一帧照片的元数据</td>
+      <td>留在本机照片与你保存的相册里，不上传</td>
+    </tr>
   </table>
 
   <p>我们只申请「添加到相册」权限，<strong>不申请读取相册权限</strong>。若你拒绝授权，仅对应功能不可用，App 的其余部分仍可正常使用。</p>
@@ -144,7 +193,13 @@
     <li><strong>偏好设置与试用次数</strong>：存储于系统 <code>UserDefaults</code>，用于记住你的各项设置。</li>
     <li><strong>拍摄备份与导出文件</strong>：存储于 App 沙盒的 Documents 目录。你可以在「文件」App 的「我的 iPhone」下查看和管理，也可以随时自行删除。</li>
   </ul>
-  <p>卸载 App 时，上述数据会随 App 一并从设备中移除。我们无法访问这些数据。</p>
+  <h3>iCloud 同步（默认开启）</h3>
+  <p>三册记录——<strong>胶卷记录、取景记录、胶片范围预览</strong>——连同其中的图片，会通过 Apple 的
+  CloudKit 存进你自己 iCloud 账号下的私有数据库，用来在你的几台设备之间同步。这些数据只在你自己的
+  iCloud 里：我们没有它的读取权限，也没有服务器接收它。</p>
+  <p>在「设置 → iCloud 同步」里可以随时关掉，关掉后不再上传。删除 App 不会自动删掉已经同步到 iCloud 的内容，
+  需要的话在「设置 → 你的 Apple ID → iCloud → 管理账户存储」里清理。</p>
+  <p>卸载 App 时，本机数据会随 App 一并移除。我们无法访问这些数据。</p>
 </section>
 
 <section>
@@ -170,31 +225,39 @@
 
 <section>
   <h2>8. 本政策的变更</h2>
-  <p>如果本政策将来发生变更（例如 App 增加了联网功能），我们会在本页面更新内容并同步修改顶部的「最后更新」日期。重大变更会在 App 更新说明中一并提示。</p>
+  <p>如果本政策将来发生变更（例如增加了新的数据用途），我们会在本页面更新内容并同步修改顶部的「最后更新」日期。重大变更会在 App 更新说明中一并提示。</p>
 </section>
 
 <section>
   <h2>9. 联系我们</h2>
   <p>对本政策有任何疑问，欢迎通过以下方式联系：</p>
-  <p>邮箱：<a href="mailto:hangdk1997@buaa.edu.cn">zhangdk1997@buaa.edu.cn</a></p>
+  <p>邮箱：<a href="mailto:zhangdk1997@buaa.edu.cn">zhangdk1997@buaa.edu.cn</a></p>
 </section>
+
+</div><!-- /.zh -->
 
 <!-- ===================== English ===================== -->
 <div class="en">
   <h1>Privacy Policy</h1>
   <p class="meta">App: FilmCameraMaster<br>
-  Effective date: October 9, 2026　·　Last updated: October 9, 2026</p>
+  Effective date: October 9, 2026　·　Last updated: October 21, 2026</p>
 
   <div class="summary">
-    <p><strong>In one sentence: this app collects nothing.</strong> It does not connect to the
-    internet, has no accounts, and contains no ads or analytics. Your photos and metering data
-    never leave your device.</p>
+    <p><strong>In one sentence: this app collects nothing.</strong> It makes no network requests,
+    has no accounts, and contains no ads or analytics. Your photos and metering data stay on your
+    device. If you turn on iCloud sync, your records go to your own private iCloud database, which
+    we cannot read (see section 3).</p>
   </div>
 
   <section>
     <h2>1. Information We Collect</h2>
     <p><strong>We do not collect, transmit, or store any personal information.</strong> The app
-    performs no network requests whatsoever, so no data can be sent to us or to any third party.</p>
+    performs no network requests of its own, so no data can be sent to us or to any third party.</p>
+    <p>Location is the one exception, and only when you turn on “Record location with photos”
+    yourself: it is written into that frame's metadata and stays on the device and in the album you
+    save to. It is never uploaded to us (see section 2).</p>
+    <p>The only network activity is the optional iCloud sync, which talks to your own iCloud
+    account through Apple's CloudKit framework (see section 3).</p>
   </section>
 
   <section>
@@ -204,6 +267,9 @@
       film exposure values. Frames are processed in memory only and are never saved or uploaded.</li>
       <li><strong>Photos (add only)</strong> — used to save photos you take into your system photo
       library. The app never reads your photo library.</li>
+      <li><strong>Location (while using)</strong> — only when “Record location with photos” is on,
+      to write the current position into that frame's metadata. It stays on the device and in the
+      album you save to; it is never uploaded.</li>
     </ul>
     <p>All processing happens on your device. Declining a permission only disables the related
     feature.</p>
@@ -217,7 +283,15 @@
       <li><strong>Capture backups and exports</strong> are stored in the app's sandbox Documents
       folder, visible under "On My iPhone" in the Files app. You may delete them at any time.</li>
     </ul>
-    <p>Uninstalling the app removes all of this data. We have no access to it.</p>
+    <h3>iCloud sync (on by default)</h3>
+    <p>The three ledgers — <strong>film rolls, viewfinder readings, and film range previews</strong>
+    — together with the images inside them, are stored through Apple's CloudKit in the private
+    database of your own iCloud account, so they follow you across your devices. That data lives
+    only in your iCloud: we have no access to it, and no server of ours receives it.</p>
+    <p>Turn it off at any time under Settings → iCloud Sync; nothing is uploaded after that.
+    Deleting the app does not delete what is already in iCloud — remove it under Settings → your
+    Apple ID → iCloud → Manage Account Storage.</p>
+    <p>Uninstalling the app removes the local copy of this data. We have no access to it.</p>
   </section>
 
   <section>
@@ -242,7 +316,7 @@
   <section>
     <h2>7. Your Rights</h2>
     <p>Because we store no personal data, there is nothing to access, correct, export, or delete.
-    To clear local data, simply delete the app.</p>
+    To clear local data, turn off iCloud sync and delete the app.</p>
   </section>
 
   <section>
@@ -259,6 +333,41 @@
 <footer>
   © 2026 胶片全能助手 · FilmCameraMaster
 </footer>
+
+<script>
+// 两种语言放在同一页：App Store Connect 里「隐私政策网址」只能填一个，
+// 拆成 /zh/ 与 /en/，总有一边的用户要多点一次、或者干脆看到另一种语言。
+// 这里按浏览器语言先选一次，用户点过切换就以他的选择为准（记在 localStorage）。
+(function () {
+  var titles = {
+    zh: "隐私政策 · 胶片全能助手",
+    en: "Privacy Policy · Film Camera Master"
+  };
+  var buttons = document.querySelectorAll(".langbar button");
+
+  function apply(lang) {
+    document.documentElement.setAttribute("data-lang", lang);
+    document.documentElement.lang = lang === "zh" ? "zh-Hans" : "en";
+    document.title = titles[lang];
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", String(buttons[i].dataset.lang === lang));
+    }
+  }
+
+  var saved = null;
+  try { saved = localStorage.getItem("privacy-lang"); } catch (e) {}
+  var preferred = (navigator.language || "en").toLowerCase().indexOf("zh") === 0 ? "zh" : "en";
+  apply(saved === "zh" || saved === "en" ? saved : preferred);
+
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", function () {
+      var lang = this.dataset.lang;
+      apply(lang);
+      try { localStorage.setItem("privacy-lang", lang); } catch (e) {}
+    });
+  }
+})();
+</script>
 
 </main>
 </body>

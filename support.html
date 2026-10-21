@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-Hans" data-lang="zh">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -67,10 +67,57 @@
     color: var(--muted);
     font-size: 13px;
   }
+  .en {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+  }
+  .en h1, .en h2, .en h3 { color: var(--ink); }
+  .en h1 { font-size: 22px; }
+  .en h2 { font-size: 16px; }
+  .en .card { color: var(--ink); }
+  /* 与隐私政策同一套：一个 URL 服务两种语言，按浏览器语言先选，用户手选后记住 */
+  .langbar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin: 0 0 18px;
+    font-size: 14px;
+  }
+  .langbar button {
+    appearance: none;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    background: none;
+    padding: 2px 0;
+    font: inherit;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .langbar button[aria-pressed="true"] {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  html[data-lang="zh"] .en { display: none; }
+  html[data-lang="en"] .zh { display: none; }
+  html[data-lang="en"] .en {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+    color: var(--ink);
+  }
 </style>
 </head>
 <body>
 <main>
+
+<nav class="langbar" aria-label="语言 / Language">
+  <button type="button" data-lang="zh" aria-pressed="false">中文</button>
+  <button type="button" data-lang="en" aria-pressed="false">English</button>
+</nav>
+
+<div class="zh">
 
   <h1>技术支持</h1>
   <p class="sub">胶片全能助手 · Film Camera Master</p>
@@ -91,7 +138,8 @@
   <p>胶片参数取自各厂商公开的官方数据表（感光度、宽容度、倒易律失效区间、推荐冲洗工艺等），相机部分参考官方说明书与公开发行的技术资料。若你发现某条数据与你的实拍经验不符，欢迎来信指出。</p>
 
   <h3>App 需要联网吗？会上传我的照片吗？</h3>
-  <p>完全不需要联网，App 内不含任何网络请求，也不集成任何第三方 SDK。测光画面只在设备内存中实时处理，拍下的照片只写入你指定的相册，不会离开这台手机。详见<a href="./index.html">隐私政策</a>。</p>
+  <p>测光、算景深、查资料都不需要联网，App 自身不发起任何网络请求，也不集成任何第三方 SDK。测光画面只在设备内存中实时处理，拍下的照片只写入你指定的相册，不会离开这台手机。</p>
+  <p>唯一的联网行为是「iCloud 同步」（默认开启）：胶卷记录、取景记录、胶片范围预览会存进你自己的 iCloud 私有库，我们不接触这些数据。不想同步，在「设置 → iCloud 同步」里关掉即可，其余功能照常。详见<a href="./index.html">隐私政策</a>。</p>
 
   <h3>「Pro 终身解锁」包含什么？怎么恢复？</h3>
   <p>Pro 为一次性买断，非订阅，解锁全部高级功能。换机或重装后，在 App 内的解锁页点「恢复购买」即可找回，同一个 Apple ID 无需重复付费。若恢复失败，先确认设备已登录购买时用的 Apple ID，再重试。</p>
@@ -103,12 +151,108 @@
   <p>实时测光、系统相机和反转片预览都依赖摄像头画面，这是功能本身的需要。若你拒绝授权，仅这几项不可用，胶片库、景深计算、滤镜模拟等其余部分仍可正常使用。可在「设置 → 隐私与安全性 → 相机」里随时重新打开。</p>
 
   <h3>数据可以自己更正吗？</h3>
-  <p>可以。App 内的胶片与相机资料均支持本地查看与调整，你的修改只保存在本机，不会同步到任何服务器。</p>
+  <p>可以。App 内的胶片与相机资料均支持本地查看与调整，改动留在本机；若开着 iCloud 同步，记录会一并存进你自己的 iCloud，我们不接触。</p>
+
+  </div><!-- /.zh -->
+
+  <!-- ===================== English ===================== -->
+  <div class="en">
+    <h1>Support</h1>
+    <p class="sub">Film Camera Master</p>
+
+    <div class="card">
+      <h3 style="margin-top:0">Contact us</h3>
+      <p>If something goes wrong, a data point looks wrong, or you want a film or camera added,
+      send us an email:</p>
+      <p><strong>Email: <a href="mailto:zhangdk1997@buaa.edu.cn">zhangdk1997@buaa.edu.cn</a></strong></p>
+      <p class="sub">We reply within three business days. Including the camera model, your iOS
+      version and the steps that led to the problem helps us find it faster.</p>
+    </div>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>Why do the readings differ from my other meter?</h3>
+    <p>The app meters reflected light from the camera's live view and solves aperture and shutter
+    for the film speed you selected. The result depends on what is in front of the lens and on the
+    balance of bright and dark areas in the frame, so a systematic difference from an incident
+    meter is expected. Before a shoot, compare them on a fixed scene and find the offset that
+    belongs to your body and your development.</p>
+
+    <h3>Where does the film and camera data come from?</h3>
+    <p>Film parameters come from manufacturers' published data sheets (speed, latitude,
+    reciprocity failure, recommended processing). Camera information is based on official manuals
+    and public technical documentation. If something does not match your own experience, tell us.</p>
+
+    <h3>Does the app need the internet? Does it upload my photos?</h3>
+    <p>Metering, depth of field and the lookup tables all work offline. The app makes no network
+    requests of its own and bundles no third-party SDKs. Live metering frames are processed in
+    memory only, and photos you take are written to the album you choose and never leave the phone.</p>
+    <p>The one exception is iCloud sync (on by default): film rolls, viewfinder readings and film
+    range previews are stored in your own private iCloud database, which we cannot read. Turn it off
+    under Settings → iCloud Sync and everything else keeps working. See the
+    <a href="./index.html">privacy policy</a>.</p>
+
+    <h3>What does the Pro unlock include, and how do I restore it?</h3>
+    <p>Pro is a one-time purchase, not a subscription, and unlocks every advanced feature. After
+    changing phones or reinstalling, tap "Restore Purchases" on the unlock screen; the same Apple ID
+    is never charged twice. If a restore fails, confirm the device is signed in with the Apple ID
+    used for the purchase and try again.</p>
+
+    <h3>Where are the system-camera photos saved?</h3>
+    <p>Photos taken with the system camera and the slide preview are saved to your photo library,
+    with a copy kept in the app's sandbox <code>Documents</code> folder. Open the Files app under
+    "On My iPhone → Film Camera Master" to view, export or delete them. Deleting the app removes
+    these copies as well.</p>
+
+    <h3>Why do some features stop working if I deny camera access?</h3>
+    <p>Live metering, the system camera and the slide preview all need the camera feed; that is what
+    the features are. Denying access disables only those, while the film library, depth-of-field
+    calculation and filter simulation keep working. You can grant access again in Settings →
+    Privacy &amp; Security → Camera.</p>
+
+    <h3>Can I correct the data myself?</h3>
+    <p>Yes. Film and camera entries can be viewed and adjusted in the app, and your edits stay on
+    this device. With iCloud sync on, your records are also stored in your own iCloud, which we
+    cannot read.</p>
+  </div>
 
   <footer>
-    最后更新：2026 年 10 月 9 日<br>
-    © 2026 张登科 · 保留所有权利
+    最后更新：2026 年 10 月 21 日　·　Last updated: October 21, 2026<br>
+    © 2026 张登科 · 保留所有权利 · All rights reserved
   </footer>
+
+<script>
+// 与隐私政策同一套：按浏览器语言先选一次，用户点过切换就记住（localStorage）
+(function () {
+  var titles = {
+    zh: "技术支持 · 胶片全能助手",
+    en: "Support · Film Camera Master"
+  };
+  var buttons = document.querySelectorAll(".langbar button");
+
+  function apply(lang) {
+    document.documentElement.setAttribute("data-lang", lang);
+    document.documentElement.lang = lang === "zh" ? "zh-Hans" : "en";
+    document.title = titles[lang];
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", String(buttons[i].dataset.lang === lang));
+    }
+  }
+
+  var saved = null;
+  try { saved = localStorage.getItem("support-lang"); } catch (e) {}
+  var preferred = (navigator.language || "en").toLowerCase().indexOf("zh") === 0 ? "zh" : "en";
+  apply(saved === "zh" || saved === "en" ? saved : preferred);
+
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", function () {
+      var lang = this.dataset.lang;
+      apply(lang);
+      try { localStorage.setItem("support-lang", lang); } catch (e) {}
+    });
+  }
+})();
+</script>
 
 </main>
 </body>
