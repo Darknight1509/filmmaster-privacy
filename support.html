@@ -147,8 +147,12 @@
   <h3>系统相机拍的照片存在哪里？</h3>
   <p>「系统相机」和「反转片预览」拍下的照片会存进系统相册，同时保留一份备份在 App 沙盒的 <code>Documents</code> 目录。你可以打开「文件」App，在「我的 iPhone → 胶片全能助手」下查看、导出或自行删除。卸载 App 时这些备份会一并移除。</p>
 
-  <h3>为什么拒绝相机权限后有些功能用不了？</h3>
-  <p>实时测光、系统相机和反转片预览都依赖摄像头画面，这是功能本身的需要。若你拒绝授权，仅这几项不可用，胶片库、景深计算、滤镜模拟等其余部分仍可正常使用。可在「设置 → 隐私与安全性 → 相机」里随时重新打开。</p>
+  <h3>删掉一条记录，相册里的照片也会跟着删吗？</h3>
+  <p>会。在 App 里删记录时，它会把当初替你存进相册的那一张一起删掉，免得相册里留下一堆找不到出处的照片。这一步需要相册的「完整访问」权限，第一次操作时系统会弹窗询问。</p>
+  <p>如果你只给了「添加」权限，删除记录照常进行，相册里那张会留下，需要你自己清理。反过来说，保存照片本身只要「添加」，App 平时不会去翻你的相册。</p>
+
+  <h3>为什么拒绝相机或相册权限后有些功能用不了？</h3>
+  <p>实时测光、系统相机和反转片预览都依赖摄像头画面；保存照片要「添加」权限，删除记录连带清理相册那张要「完整访问」权限。这是功能本身的需要，不是绕道收集你的东西。若你拒绝授权，仅这几项不可用，胶片库、景深计算、滤镜模拟等其余部分仍可正常使用，权限可在「设置 → 隐私与安全性」里随时重新打开。</p>
 
   <h3>数据可以自己更正吗？</h3>
   <p>可以。App 内的胶片与相机资料均支持本地查看与调整，改动留在本机；若开着 iCloud 同步，记录会一并存进你自己的 iCloud，我们不接触。</p>
@@ -204,11 +208,20 @@
     "On My iPhone → Film Camera Master" to view, export or delete them. Deleting the app removes
     these copies as well.</p>
 
-    <h3>Why do some features stop working if I deny camera access?</h3>
-    <p>Live metering, the system camera and the slide preview all need the camera feed; that is what
-    the features are. Denying access disables only those, while the film library, depth-of-field
-    calculation and filter simulation keep working. You can grant access again in Settings →
-    Privacy &amp; Security → Camera.</p>
+    <h3>Does deleting a record also delete the photo in my library?</h3>
+    <p>Yes. Deleting a record removes the copy the app saved to your photo library for it, so the
+    library does not fill up with photos you can no longer trace. That step needs “full access” to
+    Photos, and iOS asks for it the first time you do it.</p>
+    <p>With only “add” permission, the record is still deleted but the library copy stays and has to
+    be cleaned up by hand. Saving a photo, on the other hand, only needs “add” — the app does not go
+    through your library otherwise.</p>
+
+    <h3>Why do some features stop working if I deny camera or Photos access?</h3>
+    <p>Live metering, the system camera and the slide preview all need the camera feed; saving a
+    photo needs “add”, and deleting a record along with its library copy needs “full access”. Those
+    are what the features are, not a way to collect something. Denying access disables only those,
+    while the film library, depth-of-field calculation and filter simulation keep working. You can
+    grant access again in Settings → Privacy &amp; Security.</p>
 
     <h3>Can I correct the data myself?</h3>
     <p>Yes. Film and camera entries can be viewed and adjusted in the app, and your edits stay on

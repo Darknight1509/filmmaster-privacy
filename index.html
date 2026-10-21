@@ -172,9 +172,14 @@
       <td>仅在设备内存中实时处理，不留存、不上传</td>
     </tr>
     <tr>
-      <td>照片（仅添加）</td>
+      <td>照片（添加）</td>
       <td>把「系统相机」和「反转片预览」拍下的照片保存到系统相册</td>
       <td>写入你指定的相册，App 不读取相册中的其他内容</td>
+    </tr>
+    <tr>
+      <td>照片（完整访问）</td>
+      <td>你从相册里选中某张照片导入时，读取那一张的原文件（HDR 的高光才不丢）；删除一条记录时，删掉当初随它一起存进相册的那张</td>
+      <td>只动你选中的那张与 App 自己存进去的那张，不扫描、不上传相册里的其他内容</td>
     </tr>
     <tr>
       <td>定位（使用期间）</td>
@@ -183,7 +188,8 @@
     </tr>
   </table>
 
-  <p>我们只申请「添加到相册」权限，<strong>不申请读取相册权限</strong>。若你拒绝授权，仅对应功能不可用，App 的其余部分仍可正常使用。</p>
+  <p>保存照片本身只要「添加」权限；<strong>「完整访问」只在你要导入原文件、或者要删除记录带走相册里那张时才用到</strong>，
+  不需要读取相册的其余内容，也不申请「始终允许」的后台定位。若你拒绝某项授权，仅对应功能不可用，App 的其余部分仍可正常使用。</p>
 </section>
 
 <section>
@@ -265,14 +271,19 @@
     <ul>
       <li><strong>Camera</strong> — used to read scene brightness in real time and convert it into
       film exposure values. Frames are processed in memory only and are never saved or uploaded.</li>
-      <li><strong>Photos (add only)</strong> — used to save photos you take into your system photo
-      library. The app never reads your photo library.</li>
+      <li><strong>Photos (add)</strong> — used to save photos you take into your system photo
+      library, into the album you choose. Nothing else in the library is read.</li>
+      <li><strong>Photos (full access)</strong> — used only when you pick a photo to import, to read
+      that one original file (so HDR highlights survive), and when you delete a record, to remove
+      the copy the app saved to the library alongside it. Only the item you pick and the item the
+      app saved are touched; the rest of the library is never scanned or uploaded.</li>
       <li><strong>Location (while using)</strong> — only when “Record location with photos” is on,
       to write the current position into that frame's metadata. It stays on the device and in the
-      album you save to; it is never uploaded.</li>
+      album you save to; it is never uploaded. Background location is not requested.</li>
     </ul>
-    <p>All processing happens on your device. Declining a permission only disables the related
-    feature.</p>
+    <p>Saving a photo needs only “add”; full access is used solely for importing an original or for
+    deleting the library copy along with a record. All processing happens on your device, and
+    declining a permission only disables the related feature.</p>
   </section>
 
   <section>
