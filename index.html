@@ -131,12 +131,12 @@
 <header>
   <h1>隐私政策</h1>
   <p class="meta">适用应用：胶片全能助手（FilmCameraMaster）<br>
-  生效日期：2026 年 10 月 9 日　·　最后更新：2026 年 10 月 21 日</p>
+  生效日期：2026 年 10 月 9 日　·　最后更新：2026 年 10 月 26 日</p>
 </header>
 
 <div class="summary">
   <p><strong>一句话总结：这个 App 不收集你的任何信息。</strong><br>
-  它不发起任何网络请求、没有账号体系、不含广告和分析工具，你拍的照片和测光数据只留在你自己的手机上。
+  它不上传任何内容、没有账号体系、不含广告和分析工具，你拍的照片和测光数据只留在你自己的手机上。
   若你打开「iCloud 同步」，记录会存进你自己的 iCloud 私有库，我们读不到（见第 3 节）。</p>
 </div>
 
@@ -152,8 +152,9 @@
   </ul>
   <p>位置是唯一的例外，而且只在你自己打开「拍照时记录地点」时才会用到：它被写进那一帧照片的元数据，
   留在本机与你保存的相册里，不会上传给我们（见第 2 节）。</p>
-  <p>App 自身不发起任何网络请求，因此不存在数据被传输到我们或第三方的可能。唯一的联网行为是你可选的
-  iCloud 同步，由系统的 CloudKit 框架直接与你自己的 iCloud 账号通信，见第 3 节。</p>
+  <p>App 自身不发起任何网络请求，因此不存在数据被传输到我们或第三方的可能。仅有的两处联网都由系统框架完成：
+  你可选开启的 iCloud 同步（CloudKit，直接与你自己的 iCloud 账号通信，见第 3 节），以及你购买或恢复购买时的
+  StoreKit 交易（由 App Store 处理，见第 4 节）。这两种情况下数据都不经过我们的服务器——我们没有服务器。</p>
 </section>
 
 <section>
@@ -209,9 +210,12 @@
 </section>
 
 <section>
-  <h2>4. 应用内购买</h2>
-  <p>App 提供一次性买断的「Pro 终身解锁」。<strong>支付流程完全由 Apple 的 App Store 处理，我们不接触也不存储你的任何支付信息</strong>（包括姓名、银行卡号、账单地址等）。</p>
-  <p>App 仅通过系统 StoreKit 框架读取「该笔购买是否已完成」这一状态，用于在本机解锁对应功能。关于 Apple 如何处理你的支付与账户数据，请参阅 <a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple 隐私政策</a>。</p>
+  <h2>4. 应用内购买与订阅</h2>
+  <p>Pro 有三档解锁方式：按月订阅、按年订阅、一次性买断，三档解锁的功能完全相同，差别只在付款节奏。</p>
+  <p><strong>支付流程完全由 Apple 的 App Store 处理，我们不接触也不存储你的任何支付信息</strong>（包括姓名、银行卡号、账单地址等）。App 仅通过系统 StoreKit 框架读取「这件商品是否已购买、订阅是否仍在有效期内」这一状态，用于在本机解锁对应功能。</p>
+  <h3>续期与取消</h3>
+  <p>按月与按年订阅在到期时自动续期，价格以你在确认购买时 Apple 展示的为准。不想续了，在「设置 → 你的 Apple ID → 订阅」里关掉自动续期即可；关掉后仍可使用到本期结束，不会再扣费。卸载 App 不会取消订阅。</p>
+  <p>退款由 Apple 处理，可在 <a href="https://reportaproblem.apple.com" rel="noopener">reportaproblem.apple.com</a> 申请。使用条款为 Apple 标准最终用户许可协议，见 <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" rel="noopener">apple.com/legal/internet-services/itunes/dev/stdeula</a>。关于 Apple 如何处理你的支付与账户数据，请参阅 <a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple 隐私政策</a>。</p>
 </section>
 
 <section>
@@ -246,10 +250,10 @@
 <div class="en">
   <h1>Privacy Policy</h1>
   <p class="meta">App: FilmCameraMaster<br>
-  Effective date: October 9, 2026　·　Last updated: October 21, 2026</p>
+  Effective date: October 9, 2026　·　Last updated: October 26, 2026</p>
 
   <div class="summary">
-    <p><strong>In one sentence: this app collects nothing.</strong> It makes no network requests,
+    <p><strong>In one sentence: this app collects nothing.</strong> It uploads nothing,
     has no accounts, and contains no ads or analytics. Your photos and metering data stay on your
     device. If you turn on iCloud sync, your records go to your own private iCloud database, which
     we cannot read (see section 3).</p>
@@ -258,7 +262,10 @@
   <section>
     <h2>1. Information We Collect</h2>
     <p><strong>We do not collect, transmit, or store any personal information.</strong> The app
-    performs no network requests of its own, so no data can be sent to us or to any third party.</p>
+    performs no network requests of its own, so no data can be sent to us or to any third party.
+    The only two network paths are driven by system frameworks: iCloud sync, if you turn it on
+    (section 3), and the StoreKit transaction when you buy or restore a purchase (section 4).
+    Neither passes through a server of ours — we do not have one.</p>
     <p>Location is the one exception, and only when you turn on “Record location with photos”
     yourself: it is written into that frame's metadata and stays on the device and in the album you
     save to. It is never uploaded to us (see section 2).</p>
@@ -306,10 +313,23 @@
   </section>
 
   <section>
-    <h2>4. In-App Purchases</h2>
-    <p>The "Pro Lifetime Unlock" is a one-time purchase. <strong>Payment is handled entirely by
-    Apple; we never receive or store your payment details.</strong> The app only reads a local
-    "purchased" flag via StoreKit to unlock features. See
+    <h2>4. In-App Purchases and Subscriptions</h2>
+    <p>Pro can be unlocked in three ways: a monthly subscription, a yearly subscription, or a
+    one-time purchase. All three unlock the same features; only the payment rhythm differs.</p>
+    <p><strong>Payment is handled entirely by Apple; we never receive or store your payment
+    details</strong> (name, card number, billing address, or anything else). The app only reads,
+    through StoreKit, whether an item has been purchased or a subscription is still active, in
+    order to unlock features on this device.</p>
+    <h3>Renewal and cancellation</h3>
+    <p>Monthly and yearly subscriptions renew automatically at the end of each period, at the price
+    Apple shows when you confirm the purchase. To stop, turn off auto-renewal in Settings → your
+    Apple ID → Subscriptions; access continues until the end of the current period and no further
+    charge is made. Deleting the app does not cancel a subscription.</p>
+    <p>Refunds are handled by Apple and can be requested at
+    <a href="https://reportaproblem.apple.com" rel="noopener">reportaproblem.apple.com</a>. The
+    Terms of Use are Apple's standard end user license agreement, at
+    <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" rel="noopener">apple.com/legal/internet-services/itunes/dev/stdeula</a>.
+    For how Apple handles your payment and account data, see
     <a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple's Privacy Policy</a>.</p>
   </section>
 

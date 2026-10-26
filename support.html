@@ -138,11 +138,12 @@
   <p>胶片参数取自各厂商公开的官方数据表（感光度、宽容度、倒易律失效区间、推荐冲洗工艺等），相机部分参考官方说明书与公开发行的技术资料。若你发现某条数据与你的实拍经验不符，欢迎来信指出。</p>
 
   <h3>App 需要联网吗？会上传我的照片吗？</h3>
-  <p>测光、算景深、查资料都不需要联网，App 自身不发起任何网络请求，也不集成任何第三方 SDK。测光画面只在设备内存中实时处理，拍下的照片只写入你指定的相册，不会离开这台手机。</p>
+  <p>测光、算景深、查资料都不需要联网，App 自身不发起任何网络请求，也不集成任何第三方 SDK。测光画面只在设备内存中实时处理，拍下的照片只写入你指定的相册，不会离开这台手机。购买或恢复购买时会由系统走一笔 StoreKit 交易，那一步由 App Store 完成，我们不接触你的支付信息。</p>
   <p>唯一的联网行为是「iCloud 同步」（默认开启）：胶卷记录、取景记录、胶片范围预览会存进你自己的 iCloud 私有库，我们不接触这些数据。不想同步，在「设置 → iCloud 同步」里关掉即可，其余功能照常。详见<a href="./index.html">隐私政策</a>。</p>
 
-  <h3>「Pro 终身解锁」包含什么？怎么恢复？</h3>
-  <p>Pro 为一次性买断，非订阅，解锁全部高级功能。换机或重装后，在 App 内的解锁页点「恢复购买」即可找回，同一个 Apple ID 无需重复付费。若恢复失败，先确认设备已登录购买时用的 Apple ID，再重试。</p>
+  <h3>Pro 有哪几种买法？订阅怎么取消？</h3>
+  <p>Pro 有三档：按月订阅、按年订阅、一次性买断。三档解锁的功能完全相同，差别只在付款节奏。换机或重装后，在 App 内的解锁页点「恢复购买」即可找回，同一个 Apple ID 无需重复付费；若恢复失败，先确认设备已登录购买时用的 Apple ID，再重试。</p>
+  <p>订阅在到期时自动续期。不想续了，在「设置 → 你的 Apple ID → 订阅」里关掉自动续期，关掉后仍可用到本期结束，不会再扣费；卸载 App 不会取消订阅。退款由 Apple 处理，可在 <a href="https://reportaproblem.apple.com" rel="noopener">reportaproblem.apple.com</a> 申请。</p>
 
   <h3>系统相机拍的照片存在哪里？</h3>
   <p>「系统相机」和「反转片预览」拍下的照片会存进系统相册，同时保留一份备份在 App 沙盒的 <code>Documents</code> 目录。你可以打开「文件」App，在「我的 iPhone → 胶片全能助手」下查看、导出或自行删除。卸载 App 时这些备份会一并移除。</p>
@@ -190,17 +191,24 @@
     <h3>Does the app need the internet? Does it upload my photos?</h3>
     <p>Metering, depth of field and the lookup tables all work offline. The app makes no network
     requests of its own and bundles no third-party SDKs. Live metering frames are processed in
-    memory only, and photos you take are written to the album you choose and never leave the phone.</p>
+    memory only, and photos you take are written to the album you choose and never leave the phone.
+    Buying or restoring a purchase runs a StoreKit transaction handled by the App Store; we never
+    see your payment details.</p>
     <p>The one exception is iCloud sync (on by default): film rolls, viewfinder readings and film
     range previews are stored in your own private iCloud database, which we cannot read. Turn it off
     under Settings → iCloud Sync and everything else keeps working. See the
     <a href="./index.html">privacy policy</a>.</p>
 
-    <h3>What does the Pro unlock include, and how do I restore it?</h3>
-    <p>Pro is a one-time purchase, not a subscription, and unlocks every advanced feature. After
-    changing phones or reinstalling, tap "Restore Purchases" on the unlock screen; the same Apple ID
-    is never charged twice. If a restore fails, confirm the device is signed in with the Apple ID
-    used for the purchase and try again.</p>
+    <h3>How can I buy Pro, and how do I cancel a subscription?</h3>
+    <p>Pro comes in three forms: monthly, yearly, or a one-time purchase. All three unlock the same
+    features; only the payment rhythm differs. After changing phones or reinstalling, tap "Restore
+    Purchases" on the unlock screen; the same Apple ID is never charged twice. If a restore fails,
+    confirm the device is signed in with the Apple ID used for the purchase and try again.</p>
+    <p>Subscriptions renew automatically at the end of each period. To stop, turn off auto-renewal
+    in Settings → your Apple ID → Subscriptions; access continues until the end of the current
+    period and no further charge is made. Deleting the app does not cancel a subscription. Refunds
+    are handled by Apple and can be requested at
+    <a href="https://reportaproblem.apple.com" rel="noopener">reportaproblem.apple.com</a>.</p>
 
     <h3>Where are the system-camera photos saved?</h3>
     <p>Photos taken with the system camera and the slide preview are saved to your photo library,
@@ -230,7 +238,7 @@
   </div>
 
   <footer>
-    最后更新：2026 年 10 月 21 日　·　Last updated: October 21, 2026<br>
+    最后更新：2026 年 10 月 26 日　·　Last updated: October 26, 2026<br>
     © 2026 张登科 · 保留所有权利 · All rights reserved
   </footer>
 
